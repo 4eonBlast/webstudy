@@ -92,3 +92,5 @@ CSS - CSS Parser - Style rules
 
 DOM - Document object model
 HTML 트리구조를 만들어서 브라우저가 처리하도록 한다. p태그 안에 div 안에 뭐 image..
+
+2nd.
