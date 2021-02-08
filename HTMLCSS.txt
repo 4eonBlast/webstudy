@@ -82,12 +82,71 @@ CSS Selector
         E:nth-of-type(n)은 같은 유형의 n번째 형제인 E요소 ------e타입의 자식 중 n 번째
 
 
-color - 16진수로도 표현 가능
-font-size - pixel 단위로 설정
-            em - 상대적 크기로 배정할 수 있음 2em -> 2배 
-        fontsize 값은 자식노드에 상속(부모한테서 받은 픽셀에서 em 상대적으로 적용)
-background color/image 비슷한
-font-family -> 여러가지 폰트 적용가능
-                a,b,c,d,... a가 지원이 안되면 b b도 안되면 c ....
+    color - 16진수로도 표현 가능
+    font-size - pixel 단위로 설정
+                em - 상대적 크기로 배정할 수 있음 2em -> 2배 
+            fontsize 값은 자식노드에 상속(부모한테서 받은 픽셀에서 em 상대적으로 적용)
+    background color/image 비슷한
+    font-family -> 여러가지 폰트 적용가능
+                    a,b,c,d,... a가 지원이 안되면 b b도 안되면 c ....
 
-            
+
+
+css로 html 요소들을 어떻게 배치시키나?
+
+    엘리먼트 -> 위에서 아래로 순서대로 블럭을 이루며 배치되는 것이기본
+        div     |
+        div     |
+        div     V
+    
+    -> css의 추가적인 속성들을 이용해서
+    display , position, float
+
+    1) display : block
+        위에서 아래로 쌓이는 구조. 높이값을 주면 크기가 바뀔수도.
+
+    2) display : inline
+        -> 옆 방향으로 배치하는 ( 우측으로 흐르고 꽉차면 오른쪽 아래로 빈자리를 차지하면서 흐름)
+        span, a , strong 모두 inline으로 배치됨
+
+    position 속성
+        (엘리먼트 배치가 순서대로만 위아래, 좌우로 흐르면서 쌓이기만 하면 다양한 배치를 하기 어렵다.)
+    
+    (static) - 기본값이 존재 그냥 순서대로 배치되는것.
+
+    기준점? top,left top bottom 
+    상위 엘리먼트중에 static이 아닌 position이 기준점이 된다.
+    position : absolute를 쓰기 위해서 relative를 자주 씀
+    
+        static
+        absolute - top,left값을 꼭 줘야함
+        relative - 원래 위치에서 변경되는
+        fixed   -   body를 기준으로 변경이 되지 않는다. (스크롤이 되어도 항상 그 위치에)
+    
+    margin -> 간격을 다르게 해서 배치하기
+             위/아래/좌/우 엘리먼트와 본인간의 간격.
+    float -> 원래 flow에서 벗어날 수 있고 둥둥 떠다닐 수 있는.
+            뒤의 block 엘리먼트가 float 된 엘리먼트를 의식하지 못하고 중첩되어 배치됨
+        (기존의 배치에서 벗어나서 둥둥 떠있는 느낌)
+        좌/우 영역으로 레이아웃 구성할 때 사용.
+
+    box model-> 
+    
+    ---margin-------------
+    | ---border-----------
+    | |   --- padding-----
+    | |   |    ---Content-
+
+    엘리먼트의 크기는 기본적으로 부모의 크기가 기준
+
+    box-sizing과 padding. 
+    box-sizing 을 기본값(content-box)으로 사용하면 padding 값을 늘리면 사이즈가 커질 수 있음
+    box-sizing을 border-box를 사용하면 contents를 표현하는 범위 안에서는 최대한 크기를 유지하려 한다.
+
+layout 구현
+    float을 잘 이용해서 2단,3단 컬럼 배치를 구현
+    layout 배치는 다양해서 css-grid, flex 등의 속성을 잘 이용해서도 잘 사용할 수 있음.
+    특별한 위치에 배치하기 위해서는 position absolute,relative설정하면서.
+    block 요소를 inline-block으로 변경해서 가로로 배치하기도 함.
+    엘리먼트 안의 텍스트의 간격과 다른 엘리먼트 간의 간격은 padding과 margin 속성을 잘 활용해 위치시킴
+    
