@@ -1,0 +1,16 @@
+.form {
+  display: none;
+}
+
+.greetings {
+  display: none;
+}
+
+.showing {
+  display: block;
+  color: #777777;
+}
+
+body {
+  color: #344545;
+}
